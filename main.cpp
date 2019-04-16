@@ -37,6 +37,7 @@ std::string getFirstName();
 std::string getLastName();
 std::string getID();
 RefereeGrade getGrade();
+RefereeGrade convertShortToGrade(short const&);
 void print(std::ofstream*);
 void print(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
 void printheader(std::ofstream*);
@@ -70,7 +71,7 @@ SReferee referees[10] = {
 
 
 
-const SReferee* END = &referees[9];
+const SReferee* END = &referees[8];
 
 
 
@@ -276,7 +277,7 @@ void output(SReferee* referee, std::ofstream* handle)
 
 SReferee* findslot(std::string const& s)
 {
-    for (SReferee* pR = referees; pR != END; ++pR)
+    for (SReferee* pR = referees; pR <= END; ++pR)
     {
         if (pR->id == s)
         {
@@ -330,25 +331,8 @@ RefereeGrade getGrade()
               << "4. FIFA" << std::endl;
     short grade;
     std::cin >> grade;
-    switch (grade)
-    {
-    case 1:
-        return CLUB;
-        break;
-    case 2:
-        return STATE;
-        break;
-    case 3:
-        return NATIONAL;
-        break;
-    case 4:
-        return FIFA;
-        break;
-    default:
-        std::cout << "Wrong format: please try again!" << std::endl;
-        return getGrade();
-        break;
-    }
+    return convertShortToGrade(grade);
+    
 }
 
 //Print helper function: used to output to a file.
@@ -431,7 +415,7 @@ void print(State const& state, RefereeGrade const& grade, std::string const& con
         break;
     case HIGHER:
         printheader(nullptr);
-        for (SReferee* pR = referees; pR != END; ++pR)
+        for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if (pR->grade > grade)
             {
@@ -442,9 +426,9 @@ void print(State const& state, RefereeGrade const& grade, std::string const& con
         break;
     case LOWER:
         printheader(nullptr);
-        for (SReferee* pR = referees; pR != END; ++pR)
+        for (SReferee* pR = referees; pR <= END; ++pR)
         {
-            if ((pR->grade < grade) && (pR->grade != UNKNOWN))
+            if ((pR->grade < grade) && ((pR->grade)))
             {
                 output(pR, nullptr);
                 found = true;
@@ -453,7 +437,7 @@ void print(State const& state, RefereeGrade const& grade, std::string const& con
         break;
     case EXACT:
         printheader(nullptr);
-        for (SReferee* pR = referees; pR != END; ++pR)
+        for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if (pR->grade == grade)
             {
@@ -464,7 +448,7 @@ void print(State const& state, RefereeGrade const& grade, std::string const& con
         break;
     case NAME:
         printheader(nullptr);
-        for (SReferee* pR = referees; pR != END; ++pR)
+        for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if ((pR->first_name == first) || (pR->last_name == last))
             {
@@ -505,5 +489,29 @@ void printheader(std::ofstream* handle)
               << "Grade" << " |"
               << std::endl
               << "|" <<std::string(56, '-') << "|" << std::endl;
+    }
+}
+
+
+RefereeGrade convertShortToGrade(short const& input)
+{
+    switch (input)
+    {
+    case 1:
+        return CLUB;
+        break;
+    case 2:
+        return STATE;
+        break;
+    case 3:
+        return NATIONAL;
+        break;
+    case 4:
+        return FIFA;
+        break;
+    default:
+        std::cout << "Wrong format: please try again!" << std::endl;
+        return getGrade();
+        break;
     }
 }
