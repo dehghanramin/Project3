@@ -38,10 +38,10 @@ std::string getFirstName();
 std::string getLastName();
 std::string getID();
 RefereeGrade getGrade();
-RefereeGrade convertShortToGrade(short const&);
-void brute_search(std::ofstream*);
+RefereeGrade convertShortToGrade(unsigned short const&);
+void brute_search(std::ostream*);
 void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
-void printheader(std::ofstream*);
+void printheader(std::ostream*);
 void checkOutput(bool const&);
 void listAllReferees();
 void ListRefereesOfSpecificGrade();
@@ -53,7 +53,7 @@ void addNewReferee();
 void removeReferee();
 void updateRefereeGrade();
 void Quit();
-void output(SReferee*, std::ofstream*);
+void output(SReferee*, std::ostream*);
 void outputFile();
 
 //END
@@ -154,7 +154,7 @@ int menu()
 
 void listAllReferees()
 {
-    brute_search(nullptr);
+    brute_search(&std::cout);
 }
 
 
@@ -252,20 +252,11 @@ void Quit()
 
 //Print functions used in direct output
 
-void output(SReferee* referee, std::ofstream* handle)
+void output(SReferee* referee, std::ostream* handle)
 {
-    if (handle)
+    if (handle && referee)
     {
         (*handle)
-              << "| " << std::setw(12) << referee->id << " |" << std::setw(12)
-              << referee->first_name << " |" << std::setw(12)
-              << referee->last_name << " |" << std::setw(12)
-              << convertGradeToString(referee->grade) << " |" << std::endl
-              << std::endl;
-    }
-    else if (referee)
-    {
-        std::cout
               << "| " << std::setw(12) << referee->id << " |" << std::setw(12)
               << referee->first_name << " |" << std::setw(12)
               << referee->last_name << " |" << std::setw(12)
@@ -294,7 +285,7 @@ std::string getFirstName()
 {
     std::string input;
     std::cout << "Enter First Name: ";
-    std::cin >> input;
+    std::getline(std::cin, input);
     std::cout << std::endl;
     return input;
 }
@@ -305,7 +296,7 @@ std::string getLastName()
 {
     std::string input;
     std::cout << "Enter Last Name: ";
-    std::cin >> input;
+    std::getline(std::cin, input);
     std::cout << std::endl;
     return input;
 }
@@ -316,7 +307,7 @@ std::string getID()
 {
     std::string input;
     std::cout << "Enter ID: ";
-    std::cin >> input;
+    std::getline(std::cin, input);
     std::cout << std::endl;
     return input;
 }
@@ -330,7 +321,7 @@ RefereeGrade getGrade()
               << "2. STATE\n"
               << "3. NATIONAL\n"
               << "4. FIFA" << std::endl;
-    short grade;
+    unsigned short grade;
     std::cin >> grade;
     return convertShortToGrade(grade);
     
@@ -386,10 +377,10 @@ void checkOutput(bool const& parity)
 
 //General output function used for outputting all referees.
 
-void brute_search(std::ofstream* handle)
+void brute_search(std::ostream* handle)
 {
     printheader(handle);
-    for (SReferee* pR = referees; pR != END; ++pR)
+    for (SReferee* pR = referees; pR <= END; ++pR)
     {
         if (pR->id != "0000")
         {
@@ -407,53 +398,53 @@ void brute_search(State const& state, RefereeGrade const& grade, std::string con
     switch (state)
     {
     case ID:
-        printheader(nullptr);
+        printheader(&std::cout);
         if (SReferee* ref = findSlot(cond))
         {
-            output(ref, nullptr);
+            output(ref, &std::cout);
             found = true;
         }
         break;
     case HIGHER:
-        printheader(nullptr);
+        printheader(&std::cout);
         for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if (pR->grade > grade)
             {
-                output(pR, nullptr);
+                output(pR, &std::cout);
                 found = true;
             }
         }
         break;
     case LOWER:
-        printheader(nullptr);
+        printheader(&std::cout);
         for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if ((pR->grade < grade) && ((pR->grade)))
             {
-                output(pR, nullptr);
+                output(pR, &std::cout);
                 found = true;
             }
         }
         break;
     case EXACT:
-        printheader(nullptr);
+        printheader(&std::cout);
         for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if (pR->grade == grade)
             {
-                output(pR, nullptr);
+                output(pR, &std::cout);
                 found = true;
             }
         }
         break;
     case NAME:
-        printheader(nullptr);
+        printheader(&std::cout);
         for (SReferee* pR = referees; pR <= END; ++pR)
         {
             if ((pR->first_name == first) || (pR->last_name == last))
             {
-                output(pR, nullptr);
+                output(pR, &std::cout);
                 found = true;
             }
         }
@@ -467,7 +458,7 @@ void brute_search(State const& state, RefereeGrade const& grade, std::string con
 
 //Print Header Information for output.
 
-void printheader(std::ofstream* handle)
+void printheader(std::ostream* handle)
 {
     if (handle)
     {
@@ -480,21 +471,10 @@ void printheader(std::ofstream* handle)
               << std::endl
               << "|" <<std::string(56, '-') << "|" << std::endl;
     }
-    else
-    {
-        std::cout
-              << "|" <<std::string(56, '-') << "|" << std::endl
-              << "| " << std::setw(12) << "ID" << " |" << std::setw(12)
-              << "Fisrt Name" << " |" << std::setw(12)
-              << "Last Name" << " |" << std::setw(12)
-              << "Grade" << " |"
-              << std::endl
-              << "|" <<std::string(56, '-') << "|" << std::endl;
-    }
 }
 
 
-RefereeGrade convertShortToGrade(short const& input)
+RefereeGrade convertShortToGrade(unsigned short const& input)
 {
     switch (input)
     {
