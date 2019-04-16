@@ -2,8 +2,9 @@
 //Programmer:  Ramin Dehghan                                      CSCI 123, Spring 2019
 //Project #3                                                      Instructor:  Timothy Mai
 //Due Date:  04/06/2019                                           Date Submitted: 
-//Program Description: A referee listing program with various different ways to display content it is holding. CAn add, remove, list, ...
-//referees. All search algorithms written in linear time.
+//Program Description: A referee listing program with various different ways to display content it is holding. Can add, remove, list, ...
+//referees. All search algorithms written in linear time. Includes input spinners and function abstractions. Reformatted to prevent the use of
+//dynamic varibales for optimization
 
 
 
@@ -16,7 +17,7 @@
 
 
 enum RefereeGrade {UNKNOWN, CLUB, STATE, NATIONAL, FIFA};
-enum State {EXACT, ID, HIGHER, LOWER, NAME};
+enum State {EXACT, ID, HIGHER, LOWER, NAME}; //Used in brute_search function to determine type of search
 
 
 
@@ -28,18 +29,18 @@ struct SReferee
     RefereeGrade grade;
 };
 
-
+//Function declaration
 
 int menu();
 std::string convertGradeToString(RefereeGrade const&);
-SReferee* findslot(std::string const&);
+SReferee* findSlot(std::string const&);
 std::string getFirstName();
 std::string getLastName();
 std::string getID();
 RefereeGrade getGrade();
 RefereeGrade convertShortToGrade(short const&);
-void print(std::ofstream*);
-void print(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
+void brute_search(std::ofstream*);
+void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
 void printheader(std::ofstream*);
 void checkOutput(bool const&);
 void listAllReferees();
@@ -55,7 +56,7 @@ void Quit();
 void output(SReferee*, std::ofstream*);
 void outputFile();
 
-
+//END
 
 SReferee referees[10] = {
     {"0001", "Mike", "Apple", CLUB},
@@ -69,7 +70,7 @@ SReferee referees[10] = {
     {"0000", "None", "None", UNKNOWN}
 };
 
-
+//End identifier iterator
 
 const SReferee* END = &referees[8];
 
@@ -91,7 +92,7 @@ int main(void)
                 ListRefereesOfSpecificGrade();
                 break;
             case 3:
-            listRefereesWithGradeHigherThanSpecifiedGrade();
+                listRefereesWithGradeHigherThanSpecifiedGrade();
                 break;
             case 4:
                 listRefereesWithGradeLowerThanSpecifiedGrade();
@@ -115,7 +116,7 @@ int main(void)
                 Quit();
                 break;
             default:
-                std::cout << "Invalid Entry!" << std::endl;
+                std::cerr << "Invalid option: please retry!" << std::endl;
                 break;
         }
     } while (choice > 0 && choice < 10);
@@ -123,7 +124,7 @@ int main(void)
     return 0;
 }
 
-
+//Function Implementations
 
 int menu()
 {
@@ -134,7 +135,7 @@ int menu()
               << "3. List All Referees With Grade Higher Than A Specific Value.\n"
               << "4. List All Referees With Grade Lower Than A specific Value.\n"
               << "5. List Referee Information With ID.\n"
-              << "6. List Referee Information With Names.\n"
+              << "6. List Referee Information With Name.\n"
               << "7. Add New Referee.\n"
               << "8. Remove Referee.\n"
               << "9. Update Referee Grade.\n"
@@ -153,49 +154,49 @@ int menu()
 
 void listAllReferees()
 {
-    print(nullptr);
+    brute_search(nullptr);
 }
 
 
 
 void ListRefereesOfSpecificGrade()
 {
-    print(EXACT, getGrade());
+    brute_search(EXACT, getGrade());
 }
 
 
 
 void listRefereesWithGradeHigherThanSpecifiedGrade()
 {
-    print(HIGHER, getGrade());
+    brute_search(HIGHER, getGrade());
 }
 
 
 
 void listRefereesWithGradeLowerThanSpecifiedGrade()
 {
-    print(LOWER, getGrade());
+    brute_search(LOWER, getGrade());
 }
 
 
 
 void listRefereeInfoWithId()
 {
-    print(ID, UNKNOWN, getID());
+    brute_search(ID, UNKNOWN, getID());
 }
 
 
 
 void listRefereeInfoWithNames()
 {
-    print(NAME, UNKNOWN, "0000", getFirstName(), getLastName());
+    brute_search(NAME, UNKNOWN, "0000", getFirstName(), getLastName());
 }
 
 
 
 void addNewReferee()
 {
-    if (SReferee* referee = findslot("0000"))
+    if (SReferee* referee = findSlot("0000"))
     {
         referee->first_name = getFirstName();
         referee->last_name = getLastName();
@@ -212,7 +213,7 @@ void addNewReferee()
 
 void removeReferee()
 {
-    if (SReferee* referee = findslot(getID()))
+    if (SReferee* referee = findSlot(getID()))
     {
         referee->first_name = "None";
         referee->last_name = "None";
@@ -230,7 +231,7 @@ void removeReferee()
 
 void updateRefereeGrade()
 {
-    if (SReferee* referee = findslot(getID()))
+    if (SReferee* referee = findSlot(getID()))
     {
         referee->grade = getGrade();
         std::cout << "Grade Updated!" << std::endl;
@@ -249,7 +250,7 @@ void Quit()
     outputFile();
 }
 
-//Outputs formatted text.
+//Print functions used in direct output
 
 void output(SReferee* referee, std::ofstream* handle)
 {
@@ -273,9 +274,9 @@ void output(SReferee* referee, std::ofstream* handle)
     }
 }
 
-//Helper function: returns a pointer to a slot with a specif ID.
+//Helper function: returns a pointer to a slot with a specif ID
 
-SReferee* findslot(std::string const& s)
+SReferee* findSlot(std::string const& s)
 {
     for (SReferee* pR = referees; pR <= END; ++pR)
     {
@@ -335,17 +336,17 @@ RefereeGrade getGrade()
     
 }
 
-//Print helper function: used to output to a file.
+//Output helper function
 
 void outputFile()
 {
     std::ofstream outStream;
     outStream.open("Referees.dat");
-    print(&outStream);
+    brute_search(&outStream);
     outStream.close();
 }
 
-//Convert's internal grade to string representations for output.
+
 
 std::string convertGradeToString(RefereeGrade const& grade)
 {
@@ -367,13 +368,13 @@ std::string convertGradeToString(RefereeGrade const& grade)
         return "FIFA";
         break;
     default:
-        std::cout << "Error in conversion!" << std::endl;
+        std::cerr << "Error in conversion!" << std::endl;
         return "UNKNOWN";
         break;
     }
 }
 
-//Print helper function: detects if no output has been made.
+//Output helper function: detects if no output has been made.
 
 void checkOutput(bool const& parity)
 {
@@ -383,9 +384,9 @@ void checkOutput(bool const& parity)
     }
 }
 
-//General print function used for outputting all referees.
+//General output function used for outputting all referees.
 
-void print(std::ofstream* handle)
+void brute_search(std::ofstream* handle)
 {
     printheader(handle);
     for (SReferee* pR = referees; pR != END; ++pR)
@@ -398,16 +399,16 @@ void print(std::ofstream* handle)
 
 }
 
-//General print function to output referees based on State.
+//General search function to find & output referees based on State.
 
-void print(State const& state, RefereeGrade const& grade, std::string const& cond, std::string const& first, std::string const& last)
+void brute_search(State const& state, RefereeGrade const& grade, std::string const& cond, std::string const& first, std::string const& last)
 {
     bool found = false;
     switch (state)
     {
     case ID:
         printheader(nullptr);
-        if (SReferee* ref = findslot(cond))
+        if (SReferee* ref = findSlot(cond))
         {
             output(ref, nullptr);
             found = true;
@@ -515,3 +516,4 @@ RefereeGrade convertShortToGrade(short const& input)
         break;
     }
 }
+//END
