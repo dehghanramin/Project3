@@ -39,6 +39,8 @@ std::string getLastName();
 std::string getID();
 RefereeGrade getGrade();
 RefereeGrade convertShortToGrade(unsigned short const&);
+void outputError();
+void outputNoSlot();
 void brute_search(std::ostream*);
 void brute_search(State const&, RefereeGrade const& = UNKNOWN, std::string const& = "0000", std::string const& = "None", std::string const& = "None");
 void printheader(std::ostream*);
@@ -72,7 +74,7 @@ SReferee referees[10] = {
 
 //End identifier iterator
 
-const SReferee* END = &referees[8];
+constexpr SReferee* END = &referees[(sizeof(referees)/sizeof(*referees)) - 2];
 
 
 
@@ -205,7 +207,7 @@ void addNewReferee()
     }
     else
     {
-        std::cout << "Error: No empty slots or invalid entry!" << std::endl;
+        outputNoSlot();
     }
 }
 
@@ -223,7 +225,7 @@ void removeReferee()
     }
     else
     {
-        std::cout << "Wrong input try again!" << std::endl;
+        outputError();
     }
 }
 
@@ -238,7 +240,7 @@ void updateRefereeGrade()
     }
     else
     {
-        std::cout << "Wrong input! Try again." << std::endl;
+        outputError();
     }
 }
 
@@ -496,4 +498,21 @@ RefereeGrade convertShortToGrade(unsigned short const& input)
         break;
     }
 }
+
+
+
+void outputError()
+{
+    std::cout << "Wrong input try again!" << std::endl;
+}
+
+
+
+void outputNoSlot()
+{
+    std::cout << "Error: No empty slots or invalid entry!" << std::endl;
+}
+
+
+
 //END
