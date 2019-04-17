@@ -1,0 +1,373 @@
+Script started on 2019-04-17 14:11:37-0700
+]0;ramin@ramin-linux: ~/Documents/repos/Project3[01;32mramin@ramin-linux[00m:[01;34m~/Documents/repos/Project3[00m$ ./main
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 1
+[3J[H[2J|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0001 |        Mike |       Apple |        CLUB |
+
+|         0012 |        Josh |      Boeing |       STATE |
+
+|         0103 |       Linda |       Intel |       STATE |
+
+|         0084 |        John |      Rambus |    NATIONAL |
+
+|         0205 |       Becky |      Sirius |        CLUB |
+
+|         0807 |       Kevin |      Suzuki |    NATIONAL |
+
+|         0074 |       Henry |      Xilinx |       STATE |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 2
+[3J[H[2JSelect Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+2
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0012 |        Josh |      Boeing |       STATE |
+
+|         0103 |       Linda |       Intel |       STATE |
+
+|         0074 |       Henry |      Xilinx |       STATE |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 3
+[3J[H[2JSelect Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+2
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0084 |        John |      Rambus |    NATIONAL |
+
+|         0807 |       Kevin |      Suzuki |    NATIONAL |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 3
+[3J[H[2JSelect Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+3
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|               Sorry! Nothing to show here              |
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 4
+[3J[H[2JSelect Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+5
+Wrong format: please try again!
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+2
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0001 |        Mike |       Apple |        CLUB |
+
+|         0205 |       Becky |      Sirius |        CLUB |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 5
+[3J[H[2JEnter ID: 1
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|               Sorry! Nothing to show here              |
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 5
+[3J[H[2JEnter ID: 1234
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|               Sorry! Nothing to show here              |
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 5
+[3J[H[2JEnter ID: 0807
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0807 |       Kevin |      Suzuki |    NATIONAL |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 6
+[3J[H[2JEnter Last Name: Suzuki
+
+Enter First Name: Kevin
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0807 |       Kevin |      Suzuki |    NATIONAL |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 7
+[3J[H[2JEnter First Name: Kevin
+
+Enter Last Name: Suzuki
+
+Enter ID: 1234
+
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+2
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 6
+[3J[H[2JEnter Last Name: Suzuki
+
+Enter First Name: Kevin
+
+|--------------------------------------------------------|
+|           ID |  Fisrt Name |   Last Name |       Grade |
+|--------------------------------------------------------|
+|         0807 |       Kevin |      Suzuki |    NATIONAL |
+
+|         1234 |       Kevin |      Suzuki |       STATE |
+
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 8
+[3J[H[2JEnter ID: 0807
+
+Referee Removed!
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 9
+[3J[H[2JEnter ID: 45345
+
+Wrong input try again!
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 9
+[3J[H[2JEnter ID: 1234
+
+Select Grade:
+1. CLUB
+2. STATE
+3. NATIONAL
+4. FIFA
+4
+Grade Updated!
+
+	REFEREE ASSIGNING SYSTEM
+
+1. List All Referees.
+2. List All Referees Of A Specific Grade.
+3. List All Referees With Grade Higher Than A Specific Value.
+4. List All Referees With Grade Lower Than A specific Value.
+5. List Referee Information With ID.
+6. List Referee Information With Name.
+7. Add New Referee.
+8. Remove Referee.
+9. Update Referee Grade.
+10. Quit.
+
+Please select your option: 10
+[3J[H[2JQuitting.....
+]0;ramin@ramin-linux: ~/Documents/repos/Project3[01;32mramin@ramin-linux[00m:[01;34m~/Documents/repos/Project3[00m$ exit
+exit
+
+Script done on 2019-04-17 14:13:25-0700
